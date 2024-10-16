@@ -50,7 +50,7 @@ export const App = () => {
   // eslint-disable-next-line no-unused-vars
   const sortGoods = getPrepareGoods(goodsFromServer, { sortField }, isReversed);
 
-  const resetButton = () => {
+  const resetSort = () => {
     setSortField('');
     setIsReversed(false);
   };
@@ -90,7 +90,7 @@ export const App = () => {
 
         {(sortField || isReversed) && (
           <button
-            onClick={resetButton}
+            onClick={resetSort}
             type="button"
             className="button is-danger is-light"
           >
@@ -98,16 +98,15 @@ export const App = () => {
           </button>
         )}
       </div>
-
-      {sortGoods.map(items => {
-        return (
-          <ul>
+      <ul>
+        {sortGoods.map(items => {
+          return (
             <li data-cy="Good" key={items}>
               {items}
             </li>
-          </ul>
-        );
-      })}
+          );
+        })}
+      </ul>
     </div>
   );
 };
